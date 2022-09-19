@@ -48,6 +48,12 @@ if (app.Environment.IsDevelopment())
     System.Diagnostics.Debug.WriteLine($"postgresSection:user = {dbuser}");
     System.Diagnostics.Debug.WriteLine($"postgresSection:pass = {dbpass}");
 
+    // Pull from user secrets
+    // dotnet user-secrets init
+    // dotnet user-secrets set "MY_USER_SECRET" "thisismysecret"
+    var MY_USER_SECRET = builder.Configuration.GetValue<string>("MY_USER_SECRET");
+    System.Diagnostics.Debug.WriteLine($"MY_USER_SECRET = {MY_USER_SECRET}");
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
