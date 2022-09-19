@@ -1,3 +1,5 @@
+using lab_dotnet_config.Configuration.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -54,9 +56,18 @@ if (app.Environment.IsDevelopment())
     var MY_USER_SECRET = builder.Configuration.GetValue<string>("MY_USER_SECRET");
     System.Diagnostics.Debug.WriteLine($"MY_USER_SECRET = {MY_USER_SECRET}");
 
+    // Section Binding
+    var databaseOptions = new DatabaseOptions();
+    builder.Configuration.GetSection("Database").Bind(databaseOptions);
+    
+    System.Diagnostics.Debug.WriteLine($"Host = {databaseOptions.Host}");
+    System.Diagnostics.Debug.WriteLine($"User = {databaseOptions.User}");
+    System.Diagnostics.Debug.WriteLine($"Pass = {databaseOptions.Pass}");
+    System.Diagnostics.Debug.WriteLine($"Port = {databaseOptions.Port}");
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+}   
 
 app.UseHttpsRedirection();
 
