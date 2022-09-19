@@ -10,7 +10,7 @@ Configuration management in .NET Core 6 using [https://learn.microsoft.com/en-us
 
 Setup and use .NET Core 6 ConfigurationManager to pull configuration setings from:
 
-1. appsettings.json - using Host.CreateDefaultBuilder and WebApplication.CreateBuilder
+1. appsettings.json - using WebApplication.CreateBuilder
 2. appsettings.[ENVIRONEMENT].json - using WebApplication.CreateBuilder
 3. Environment Variables  - using WebApplication.CreateBuilder
 4. Property Files  - using WebApplication.CreateBuilder to read from appsettings.Local.json
@@ -37,7 +37,7 @@ The following list contains the default host configuration sources from highest 
 > - ASPNETCORE_-prefixed environment variables using the Environment variables configuration provider.
 Command-line arguments using the Command-line configuration provider
 > - DOTNET_-prefixed environment variables using the Environment variables configuration provider.
-## Manual Setup
+## Manual Project Setup
 
 ```bash
 mkdir lab-dotnet-config

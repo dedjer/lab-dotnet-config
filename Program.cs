@@ -1,38 +1,3 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-using IHost host = Host.CreateDefaultBuilder(args).Build();
-
-// Ask the service provider for the configuration abstraction.
-IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
-
-
-// Get values from the config given their key and their target type.
-// This next 6 lines of code will pull values from appsettings.json
-int keyOneValue = config.GetValue<int>("KeyOne");
-bool keyTwoValue = config.GetValue<bool>("KeyTwo");
-string keyThreeNestedValue = config.GetValue<string>("KeyThree:Message");
-
-// Write the values to the console.
-// Console.WriteLine($"KeyOne = {keyOneValue}");
-// Console.WriteLine($"KeyTwo = {keyTwoValue}");
-// Console.WriteLine($"KeyThree:Message = {keyThreeNestedValue}");
-
-// Since this is a web api project we use System.Diagnostics.Debug.Writeline
-// to send data to the "Debug Console" in VSCode    
-System.Diagnostics.Debug.WriteLine($"KeyOne = {keyOneValue}");
-System.Diagnostics.Debug.WriteLine($"KeyTwo = {keyTwoValue}");
-System.Diagnostics.Debug.WriteLine($"KeyThree:Message = {keyThreeNestedValue}");
-
-
-
-
-
-// Pull from properties.file    
-
-
-// Below is generated code using "dotnet new webapi" command
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
